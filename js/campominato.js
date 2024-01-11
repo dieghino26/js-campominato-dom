@@ -8,6 +8,17 @@ const rows = 10
 const cols = 10
 const totalCells = rows * cols
 
+//funzione generatore di bombe
+const bombsGenerator = (maxBombNumber, totalBombs) => {
+    const bombs = []
+    while (bombs.length < totalBombs) {
+        const randomNumber = Math.floor(Math.random() * maxBombNumber) + 1
+        if (!bombs.includes(randomNumber)) bombs.push(randomNumber)
+
+    }
+    return bombs
+}
+
 
 
 
@@ -22,6 +33,13 @@ button.addEventListener("click", function () {
 
     //score del player
     let score = 0
+
+    //punteggio massimo 
+    const maxPoints = totalCells - totalBombs
+
+    // richiamo funzione generatore bombe
+    const bombs = bombsGenerator(totalCells, totalBombs)
+    console.log(bombs)
 
 
     //cell generator
@@ -43,5 +61,6 @@ button.addEventListener("click", function () {
 
         })
     }
+
 
 })
