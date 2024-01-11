@@ -22,7 +22,7 @@ button.addEventListener("click", function () {
 
     //score del player
     let score = 0
-    playerScore.innerText = score
+
 
     //cell generator
     for (let i = 0; i < totalCells; i++) {
@@ -37,6 +37,10 @@ button.addEventListener("click", function () {
             if (cell.classList.contains("clicked")) return
             cell.classList.add("clicked")
             console.log(i + 1)
+
+            score++
+            playerScore.innerText = score;
+
         })
     }
 
