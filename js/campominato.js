@@ -42,6 +42,8 @@ button.addEventListener("click", function () {
     console.log(bombs)
 
 
+
+
     //cell generator
     for (let i = 0; i < totalCells; i++) {
         //cella
@@ -52,12 +54,25 @@ button.addEventListener("click", function () {
         grid.appendChild(cell)
 
         cell.addEventListener("click", function () {
+
+
+
             if (cell.classList.contains("clicked")) return
             cell.classList.add("clicked")
             console.log(i + 1)
 
-            score++
-            playerScore.innerText = score;
+            const asTrampledBomb = bombs.includes(i)
+
+            if (asTrampledBomb) {
+                cell.classList.add("bomb")
+                console.log("Hai pestato una bomba")
+
+            } else {
+
+                playerScore.innerText = ++score;
+            }
+
+
 
         })
     }
