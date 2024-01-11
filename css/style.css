@@ -19,6 +19,8 @@ main {
     min-width: 100vw;
     min-height: calc(100vh - 130px);
     padding-top: 100px;
+
+
 }
 
 #grid {
@@ -48,6 +50,14 @@ main {
 
 .cell.clicked {
     background-color: rgb(0, 102, 255);
+}
+
+#score {
+    margin-left: 50px;
+    background-color: #fff;
+    display: inline-block;
+    width: 300px;
+
 }
 
 
