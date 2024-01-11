@@ -19,6 +19,13 @@ const bombsGenerator = (maxBombNumber, totalBombs) => {
     return bombs
 }
 
+//funzione fine gioco
+
+const gameFinished = (score, bombs, hasWon) => {
+    const message = hasWon ? "Hai vinto!" : `Hai perso, hai totalizzato ${score} punti!`
+    alert(message)
+}
+
 
 
 
@@ -45,11 +52,11 @@ button.addEventListener("click", function () {
 
 
     //cell generator
-    for (let i = 0; i < totalCells; i++) {
+    for (let i = 1; i <= totalCells; i++) {
         //cella
         const cell = document.createElement("div")
         cell.className = "cell"
-        cell.innerText = i + 1
+        cell.innerText = i
         //aggiungere in pagina
         grid.appendChild(cell)
 
@@ -59,17 +66,21 @@ button.addEventListener("click", function () {
 
             if (cell.classList.contains("clicked")) return
             cell.classList.add("clicked")
-            console.log(i + 1)
+            console.log(i)
 
             const asTrampledBomb = bombs.includes(i)
 
             if (asTrampledBomb) {
                 cell.classList.add("bomb")
-                console.log("Hai pestato una bomba")
+                console.log("Hai pestato una bomba! Il tuo punteggio è: ", score)
+                gameFinished(score, bombs, false)
 
             } else {
-
                 playerScore.innerText = ++score;
+                if (score === maxPoints) {
+                    gameFinished(score, bombs, true)
+                }
+
             }
 
 
